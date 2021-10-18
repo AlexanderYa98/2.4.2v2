@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+</head>
+<body>
+<div align="center">
+    <h2>Edit User</h2>
+    <form action="/edit" method="post">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>ID:</td>
+                <td><input type="number" th:field="*{user.id}" readonly/></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{user.name}"/></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" th:field="*{user.lastName}"/></td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><input type="text" th:field="*{user.age}"/></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="text" th:field="*{user.password}"/></td>
+            </tr>
+            <input type="checkbox" name="checkBoxRoles" value="ROLE_USER"/>USER
+            <input type="checkbox" name="checkBoxRoles" value="ROLE_ADMIN"/>ADMIN
+            <br/>
+        </table>
+        <br/>
+        <td colspan="2"><input type="submit" value="Edit"></td>
+        <br/>
+        <br/>
+        <a th:href="@{/logout}">LOGOUT</a>
+    </form>
+</div>
+</body>
+</html>

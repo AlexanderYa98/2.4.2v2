@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-color: #ccc;
+        }
+
+        .tg td {
+            front-familly: Arial, sans-serif;
+            front-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .tg th {
+            front-familly: Arial, sans-serif;
+            front-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: #f0f0f0;
+        }
+
+        .tg .tg-4eph {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<!--    tg стиль который указан выше-->
+<div th:align="center" class="tg">
+    <h1>This Is Admin Page</h1>
+    <br/>
+    <br/>
+    <h2>INFO</h2>
+    <h3><a href="/admin/new.html">Add new User</a></h3>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>LAST_NAME</th>
+            <th>AGE</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="user : ${allUsers}">
+            <td th:text="${user.id}">ID</td>
+            <td th:text="${user.name}">NAME</td>
+            <td th:text="${user.lastName}">LAST_NAME</td>
+            <td th:text="${user.age}">AGE</td>
+            <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+            <td><a th:href="@{/remove/{id}(id=${user.id})}">Delete</a></td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <a th:href="@{/logout}">LOGOUT</a>
+</div>
+</body>
+</html>
