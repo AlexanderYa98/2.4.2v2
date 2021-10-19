@@ -2,6 +2,7 @@ package web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import web.model.Role;
 import web.model.User;
 import web.service.RoleService;
@@ -11,7 +12,7 @@ import javax.annotation.PostConstruct;
 import java.util.HashSet;
 import java.util.Set;
 
-@Configuration
+@Component
 public class TestData {
 
     private final UserService userService;

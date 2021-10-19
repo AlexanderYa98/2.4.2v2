@@ -11,8 +11,6 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-
     @PersistenceContext
     EntityManager entityManager;
 
@@ -24,7 +22,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         entityManager.persist(user);
     }
 
@@ -35,9 +32,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(User user) {
-        if (bCryptPasswordEncoder.upgradeEncoding(user.getPassword())) {
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        }
         entityManager.merge(user);
     }
 
